@@ -50,8 +50,6 @@ def scraping(url, date):
     return data_list_per_hour
 
 def create_dataset():
-    # CSV 出力先ディレクトリ
-    output_dir = r"/Users/nantekotta/Documents/jugyou/DSproglast"
 
     # 出力ファイル名
     output_file = "weather.csv"
