@@ -51,26 +51,15 @@ def scraping(url, date):
 
 def create_dataset():
 
-    # 出力ファイル名
-    output_file = "weather.csv"
 
     # データ取得開始・終了日
     start_date = datetime.date(2024, 1, 1)
     end_date = datetime.date(2024, 1, 13)
 
-    # CSV の列
-    fields = ["年月日", "時間", "気圧（現地）", "気圧（海面）",
-              "降水量", "気温", "露点湿度", "蒸気圧", "湿度",
-              "風速", "風向", "日照時間", "全天日射量", "降雪", "積雪"]  # 天気、雲量、視程は今回は対象外とする
-
     dataset = []
 
-    with open(os.path.join(output_dir, output_file), 'w') as f:
-        writer = csv.writer(f, lineterminator='\n')
-        writer.writerow(fields)
-
-        date = start_date
-        while date != end_date + datetime.timedelta(1):
+    date = start_date
+    while date != end_date + datetime.timedelta(1):
 
             # 対象url
             url = "https://www.data.jma.go.jp/obd/stats/etrn/view/hourly_s1.php?" \
@@ -78,9 +67,7 @@ def create_dataset():
 
             data_per_day = scraping(url, date)
 
-            for dpd in data_per_day:
-                writer.writerow([dpd[field] for field in fields])
-                dataset.append(dpd)
+
 
             date += datetime.timedelta(1)
 
