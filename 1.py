@@ -58,7 +58,7 @@ def create_csv():
     output_file = "weather.csv"
 
     # データ取得開始・終了日
-    start_date = datetime.date(2016, 1, 1)
+    start_date = datetime.date(2020, 1, 1)
     end_date   = datetime.date(2020, 12, 31)
 
     # CSV の列
@@ -74,8 +74,8 @@ def create_csv():
         while date != end_date + datetime.timedelta(1):
 
             # 対象url（今回は東京）
-            url = "http://www.data.jma.go.jp/obd/stats/etrn/view/hourly_s1.php?" \
-                  "prec_no=44&block_no=47662&year=%d&month=%d&day=%d&view="%(date.year, date.month, date.day)
+            url = "https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php?" \
+                  "prec_no=43&block_no=47626&year=%d&month=%d&day=%d&view="%(date.year, date.month, date.day)
 
             data_per_day = scraping(url, date)
 
