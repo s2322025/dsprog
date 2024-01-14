@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 import datetime
-import csv
 import urllib.request
 from bs4 import BeautifulSoup
 
