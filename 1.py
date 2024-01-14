@@ -15,7 +15,7 @@ def scraping(url, date):
 
     # 気象データのページを取得
     html = urllib.request.urlopen(url).read()
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, features='html.parser')
     trs = soup.find("table", { "class" : "data2_s" })
 
     data_list = []
@@ -52,7 +52,7 @@ def scraping(url, date):
 
 def create_csv():
     # CSV 出力先ディレクトリ
-    output_dir = r"D:\blog\data\weather"
+    output_dir = r"/Users/nantekotta/Documents/jugyou/DSproglast"
 
     # 出力ファイル名
     output_file = "weather.csv"
