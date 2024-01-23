@@ -19,7 +19,17 @@ for e in soup.find_all('span',class_ = "blue week-status-text"):
 dbname = "konzatu"
 conn = sqlite3.connect(dbname)
 cur = conn.cursor()
-create_table = "create table if not exists konzatu (date text,congestion text)"
+create_table = "create table if not exists konzatu2 (date text,congestion text)"
 cur.execute(create_table)
 conn.commit()
+sql = 'INSERT INTO konzatu2(date)VALUES(?)'
+for entry in konzatu_date:
+    cur.execute(sql, (entry,))
+sql = 'INSERT INTO konzatu2(congestion)VALUES(?)'
+for entry in konzatu:
+    cur.execute(sql, (entry,))
+    
+cur.execute('SELECT * FROM konzatu2')
+print(cur.fetchall())
+
 conn.close()
