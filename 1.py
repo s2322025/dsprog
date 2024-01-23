@@ -8,3 +8,9 @@ for e in soup.find_all('dt',class_ = "week-date-text"):
     konzatu_date.append(e.getText().replace("\n", ""))
 
 print(konzatu_date)
+
+konzatu = []
+for e in soup.find_all('span',class_ = "blue week-status-text"):
+    konzatu.append(e.getText().replace("\n", ""))
+
+print(konzatu)
