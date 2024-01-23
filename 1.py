@@ -4,6 +4,9 @@ import sqlite3
 
 dbname = "konzatu"
 conn = sqlite3.connect(dbname)
+cur = conn.cursor()
+create_table = "create table konzatu (id text,name text)"
+cur.execute(create_table)
 
 conn.close()
 
