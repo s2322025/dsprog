@@ -5,6 +5,6 @@ soup = BeautifulSoup(url.text, "html.parser")
 
 konzatu_date = []
 for e in soup.find_all('dt',class_ = "week-date-text"):
-    konzatu_date.append(e.getText())
+    konzatu_date.append(e.getText().replace("\n", ""))
 
 print(konzatu_date)
